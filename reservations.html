@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations - Sabor Auténtico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --primary: #DC2626; --secondary: #F59E0B; --neutral: #1C1917; --neutral-light: #44403C; --background: #FFFBEB; }
+    body { background-color: var(--background); font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .btn-primary { background-color: var(--primary); color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2); }
+    .btn-primary:hover { background-color: #B91C1C; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3); }
+    .nav-link { position: relative; color: var(--neutral-light); }
+    .nav-link.active { color: var(--primary); font-weight: 600; }
+    .nav-link:not(.active)::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
+    .nav-link:hover::after { width: 100%; }
+    .form-input { border: 1px solid #D6D3D1; transition: border-color 0.3s, box-shadow 0.3s; }
+    .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); outline: none; }
+  </style>
+</head>
+<body class="text-stone-800">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed w-full z-50 top-0 backdrop-blur-lg bg-white/80 border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-3xl font-bold font-heading">
+          <span class="gradient-text">Sabor Auténtico</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About Us</a>
+          <a href="menu.html" class="nav-link">Menu</a>
+          <a href="reservations.html" class="nav-link active">Reservations</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden md:block">
+            <a href="reservations.html" class="btn-primary px-6 py-2.5 rounded-full font-semibold">Book a Table</a>
+        </div>
+        <button class="md:hidden text-stone-600"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20">
+    <!-- RESERVATIONS HERO -->
+    <section class="relative py-32 md:py-48 bg-stone-800">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1770&auto=format&fit=crop');"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10">
+            <h1 class="text-5xl md:text-6xl font-extrabold font-heading tracking-tight drop-shadow-lg">Reserve Your Table</h1>
+            <p class="mt-4 text-xl text-stone-200">We look forward to welcoming you. Book your spot for an unforgettable dining experience.</p>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="py-24 sm:py-32">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-2xl">
+                <h2 class="text-3xl font-extrabold font-heading text-stone-900 mb-2">Booking Details</h2>
+                <p class="text-stone-600 mb-8">Please fill out the form below to request a reservation.</p>
+                <form action="#" method="POST" class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label for="party-size" class="block text-sm font-medium text-stone-700">Party Size</label>
+                        <select id="party-size" name="party-size" class="mt-1 block w-full py-3 px-4 rounded-md form-input bg-white">
+                            <option>1 person</option>
+                            <option selected>2 people</option>
+                            <option>3 people</option>
+                            <option>4 people</option>
+                            <option>5 people</option>
+                            <option>6 people</option>
+                            <option>7 people</option>
+                            <option>8 people</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-stone-700">Date</label>
+                        <input type="date" name="date" id="date" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
+                    </div>
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-stone-700">Time</label>
+                        <select id="time" name="time" class="mt-1 block w-full py-3 px-4 rounded-md form-input bg-white">
+                            <option>5:00 PM</option>
+                            <option>5:30 PM</option>
+                            <option>6:00 PM</option>
+                            <option>6:30 PM</option>
+                            <option>7:00 PM</option>
+                            <option>7:30 PM</option>
+                            <option>8:00 PM</option>
+                            <option>8:30 PM</option>
+                            <option>9:00 PM</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-stone-700">Full Name</label>
+                        <input type="text" name="name" id="name" placeholder="John Doe" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-stone-700">Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="you@example.com" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-stone-700">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" placeholder="(555) 123-4567" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="requests" class="block text-sm font-medium text-stone-700">Special Requests</label>
+                        <textarea id="requests" name="requests" rows="4" class="mt-1 block w-full p-4 rounded-md form-input" placeholder="e.g., anniversary, dietary restrictions, high chair needed"></textarea>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <button type="submit" class="w-full btn-primary text-lg font-bold py-4 px-8 rounded-full">Request Reservation</button>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-12 text-center text-stone-600">
+                <p>For parties larger than 8, please <a href="contact.html" class="font-semibold text-red-600 hover:underline">contact us</a> directly.</p>
+                <p class="mt-2">Please note: this is a reservation request. Your booking is not confirmed until you receive a confirmation email from our team.</p>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-neutral text-stone-300 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12">
+        <div class="md:col-span-1">
+          <a href="index.html" class="text-3xl font-bold font-heading mb-4 inline-block">
+            <span class="gradient-text">Sabor Auténtico</span>
+          </a>
+          <p class="text-stone-400">A Taste of Tradition, Served Daily.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Quick Links</h4>
+          <ul class="space-y-3 text-stone-400">
+            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="menu.html" class="hover:text-white transition">Menu</a></li>
+            <li><a href="reservations.html" class="hover:text-white transition">Reservations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Contact</h4>
+          <ul class="space-y-3 text-stone-400">
+            <li class="flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-red-500"></i><span>123 Flavor St,<br>Foodie Town, CA 90210</span></li>
+            <li class="flex items-center"><i class="fas fa-phone mr-3 text-red-500"></i><a href="tel:555-123-4567" class="hover:text-white transition">(555) 123-4567</a></li>
+            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-red-500"></i><a href="mailto:hola@saborautentico.com" class="hover:text-white transition">hola@saborautentico.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Follow Us</h4>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 mt-12 pt-8 text-center text-stone-500">
+        <p>&copy; 2024 Sabor Auténtico. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
