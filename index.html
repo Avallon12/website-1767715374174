@@ -3,232 +3,266 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabor Auténtico - A Taste of Tradition</title>
+  <title>Sabor Mexicana - Authentic Flavors, Modern Soul</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --primary: #DC2626; /* Red */
-      --secondary: #F59E0B; /* Amber */
-      --neutral: #1C1917; /* Rich Black */
-      --neutral-light: #44403C; /* Stone 700 */
-      --background: #FFFBEB; /* Amber 50 */
+      --primary: #DC2626;
+      --secondary: #F59E0B;
+      --neutral: #1C1917;
+      --neutral-light: #44403C;
     }
-    body { background-color: var(--background); font-family: 'Inter', sans-serif; }
+    body { background-color: #FFF8F5; font-family: 'Inter', sans-serif; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .btn-primary { background-color: var(--primary); color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2); }
-    .btn-primary:hover { background-color: #B91C1C; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3); }
-    .btn-secondary { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); transition: all 0.3s ease; }
-    .btn-secondary:hover { background-color: var(--primary); color: white; }
-    .nav-link { position: relative; color: var(--neutral-light); }
-    .nav-link.active { color: var(--primary); font-weight: 600; }
-    .nav-link:not(.active)::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
-    .nav-link:hover::after { width: 100%; }
-    .card-hover { transition: all 0.3s ease; }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-link.active { color: var(--primary); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; margin: auto; width: 6px; height: 6px; background-color: var(--primary); border-radius: 50%; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4); }
+    .card-hover { transition: all 0.3s ease-out; }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1); }
     .section-divider { position: relative; }
-    .section-divider::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 80px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFFBEB' fill-opacity='1' d='M0,192L1440,64L1440,0L0,0Z'%3E%3C/path%3E%3C/svg%3E"); background-size: cover; background-repeat: no-repeat; transform: scaleY(-1); }
+    .section-divider::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 120px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,160L48,170.7C96,181,192,203,288,208C384,213,480,203,576,176C672,149,768,107,864,112C960,117,1056,171,1152,192C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") top center no-repeat; background-size: cover; transform: scaleY(-1); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-<body class="text-stone-800">
+<body class="text-neutral">
 
-  <!-- NAVIGATION -->
-  <nav class="fixed w-full z-50 top-0 backdrop-blur-lg bg-white/80 border-b border-stone-200/80">
+  <header class="fixed w-full z-50 transition-all duration-300" id="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <a href="index.html" class="text-3xl font-bold font-heading">
-          <span class="gradient-text">Sabor Auténtico</span>
+        <a href="index.html" class="text-3xl font-extrabold">
+          <span class="gradient-text">Sabor Mexicana</span>
         </a>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="about.html" class="nav-link">About Us</a>
-          <a href="menu.html" class="nav-link">Menu</a>
-          <a href="reservations.html" class="nav-link">Reservations</a>
-          <a href="contact.html" class="nav-link">Contact</a>
-        </div>
+        <nav class="hidden md:flex items-center space-x-10">
+          <a href="index.html" class="nav-link active relative text-lg font-semibold text-neutral">Home</a>
+          <a href="about.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">About Us</a>
+          <a href="services.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Menu & Catering</a>
+          <a href="contact.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Contact</a>
+        </nav>
         <div class="hidden md:block">
-            <a href="reservations.html" class="btn-primary px-6 py-2.5 rounded-full font-semibold">Book a Table</a>
+            <a href="contact.html#reservations" class="btn-primary text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300 flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check"></i> Reserve a Table
+            </a>
         </div>
-        <button class="md:hidden text-stone-600"><i class="fas fa-bars text-xl"></i></button>
+        <button id="mobile-menu-button" class="md:hidden text-neutral text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-  </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg">
+      <a href="index.html" class="block py-3 px-6 text-lg font-semibold text-red-700">Home</a>
+      <a href="about.html" class="block py-3 px-6 text-lg text-stone-700">About Us</a>
+      <a href="services.html" class="block py-3 px-6 text-lg text-stone-700">Menu & Catering</a>
+      <a href="contact.html" class="block py-3 px-6 text-lg text-stone-700">Contact</a>
+      <div class="p-4"><a href="contact.html#reservations" class="btn-primary w-full text-center text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300">Reserve a Table</a></div>
+    </div>
+  </header>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1565299585323-15d6e08547e9?q=80&w=1980&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white reveal visible">
-            <h1 class="text-5xl md:text-7xl font-extrabold font-heading tracking-tight drop-shadow-lg">Experience the Soul of Mexico</h1>
-            <p class="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-stone-200 drop-shadow-md">Authentic recipes, fresh ingredients, and a passion for flavor in every bite.</p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="reservations.html" class="btn-primary text-lg px-8 py-4 rounded-full font-bold w-full sm:w-auto">Book Your Table</a>
-                <a href="menu.html" class="btn-secondary bg-white/20 backdrop-blur-sm border-white text-white text-lg px-8 py-4 rounded-full font-bold w-full sm:w-auto hover:bg-white hover:text-red-700">View Our Menu</a>
-            </div>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(rgba(28, 25, 23, 0.5), rgba(28, 25, 23, 0.5)), url('https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=2071&auto=format&fit=crop');">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
+        <div class="reveal">
+          <span class="inline-block px-4 py-2 bg-amber-400/20 text-amber-300 rounded-full text-sm font-semibold mb-6 border border-amber-400/50">A Culinary Fiesta Awaits</span>
+          <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">
+            Authentic Flavors, <br> <span class="gradient-text bg-clip-text text-transparent from-red-500 to-amber-400">Modern Soul</span>
+          </h1>
+          <p class="text-xl text-stone-300 mb-10 max-w-3xl mx-auto leading-relaxed">Experience the heart of Mexico. We craft every dish with generations-old recipes, the freshest local ingredients, and a passion for true flavor.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="services.html" class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">Explore Our Menu</a>
+            <a href="about.html" class="bg-transparent text-white px-8 py-4 rounded-full font-bold text-lg border-2 border-white hover:bg-white hover:text-neutral transition-all duration-300">Our Story</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="py-24 sm:py-32 bg-white">
+    <!-- Logo Strip / Social Proof -->
+    <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-base font-semibold text-red-600 tracking-wide uppercase">The Sabor Difference</h2>
-                <p class="mt-2 text-4xl sm:text-5xl font-extrabold font-heading text-stone-900 tracking-tight">Crafted with Passion & Tradition</p>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-stone-600">We believe in flavor that tells a story. Here's what makes our dining experience unforgettable.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="p-8 reveal card-hover">
-                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 mx-auto mb-6">
-                        <i class="fas fa-book-open text-3xl text-amber-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900">Authentic Family Recipes</h3>
-                    <p class="mt-2 text-stone-600">Our menu is built on recipes passed down through generations, straight from our family's kitchen in Jalisco.</p>
-                </div>
-                <div class="p-8 reveal card-hover" style="transition-delay: 200ms;">
-                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mx-auto mb-6">
-                        <i class="fas fa-leaf text-3xl text-red-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900">Market-Fresh Ingredients</h3>
-                    <p class="mt-2 text-stone-600">We partner with local farms to source the freshest produce, meats, and spices, ensuring vibrant, peak-season flavors.</p>
-                </div>
-                <div class="p-8 reveal card-hover" style="transition-delay: 400ms;">
-                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-lime-100 mx-auto mb-6">
-                        <i class="fas fa-martini-glass-citrus text-3xl text-lime-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900">Handcrafted Margaritas</h3>
-                    <p class="mt-2 text-stone-600">Our bar features premium tequilas and fresh-squeezed juices to create the perfect margarita, every time.</p>
+            <div class="reveal">
+                <h3 class="text-center text-stone-500 font-semibold uppercase tracking-widest mb-8">As Featured In</h3>
+                <div class="flex justify-around items-center gap-8 flex-wrap grayscale opacity-60">
+                    <img src="https://via.placeholder.com/150x50/cccccc/969696?text=Foodie+Weekly" alt="Foodie Weekly" class="h-8">
+                    <img src="https://via.placeholder.com/150x50/cccccc/969696?text=Eater" alt="Eater" class="h-8">
+                    <img src="https://via.placeholder.com/150x50/cccccc/969696?text=Local+Times" alt="Local Times" class="h-10">
+                    <img src="https://via.placeholder.com/150x50/cccccc/969696?text=Gourmet+Mag" alt="Gourmet Magazine" class="h-8">
+                    <img src="https://via.placeholder.com/150x50/cccccc/969696?text=City+Bites" alt="City Bites" class="h-9">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT PREVIEW SECTION -->
-    <section class="py-24 sm:py-32">
+    <!-- Features / Our Specialties -->
+    <section class="py-24 bg-stone-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">Nuestras Especialidades</span>
+          <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral mt-4">A Taste of Tradition</h2>
+          <p class="text-xl text-stone-600 mt-4 max-w-2xl mx-auto">From street-food staples to celebratory feasts, every dish tells a story.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="reveal card-hover bg-white p-8 rounded-2xl border border-stone-200 text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center mb-6 mx-auto text-3xl text-red-600"><i class="fa-solid fa-pepper-hot"></i></div>
+            <h3 class="text-2xl font-bold text-neutral mb-3">Handcrafted Tacos</h3>
+            <p class="text-stone-600">Corn tortillas made fresh daily, filled with slow-cooked meats, vibrant salsas, and authentic toppings.</p>
+          </div>
+          <div class="reveal card-hover bg-white p-8 rounded-2xl border border-stone-200 text-center" style="transition-delay: 0.1s;">
+            <div class="w-20 h-20 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center mb-6 mx-auto text-3xl text-amber-600"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+            <h3 class="text-2xl font-bold text-neutral mb-3">Artisanal Margaritas</h3>
+            <p class="text-stone-600">Premium tequilas, fresh-squeezed juices, and unique infusions create our signature, perfectly balanced cocktails.</p>
+          </div>
+          <div class="reveal card-hover bg-white p-8 rounded-2xl border border-stone-200 text-center" style="transition-delay: 0.2s;">
+            <div class="w-20 h-20 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center mb-6 mx-auto text-3xl text-red-700"><i class="fa-solid fa-bowl-food"></i></div>
+            <h3 class="text-2xl font-bold text-neutral mb-3">Sizzling Molcajetes</h3>
+            <p class="text-stone-600">A bubbling cauldron of grilled meats, cactus, and cheese in a zesty salsa. A true feast for the senses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1770&auto=format&fit=crop" alt="Restaurant Interior" class="rounded-2xl shadow-2xl object-cover w-full h-full">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" alt="Restaurant Interior" class="rounded-2xl shadow-xl w-full h-full object-cover">
                 </div>
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <h2 class="text-base font-semibold text-red-600 tracking-wide uppercase">Our Story</h2>
-                    <p class="mt-2 text-4xl sm:text-5xl font-extrabold font-heading text-stone-900 tracking-tight">From Jalisco, With Love</p>
-                    <p class="mt-6 text-lg text-stone-600 leading-relaxed">Sabor Auténtico is more than a restaurant; it's a celebration of our family's heritage. Our journey began in our grandmother's kitchen, where the aroma of slow-cooked carnitas and handmade tortillas filled the air. Today, we bring those same cherished traditions to your table.</p>
-                    <div class="mt-8">
-                        <a href="about.html" class="btn-secondary text-lg px-8 py-3 rounded-full font-bold">Learn Our Story</a>
-                    </div>
+                <div class="reveal">
+                    <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">Our Heart & Soul</span>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral mt-4 mb-6">More Than a Meal, It's an Experience</h2>
+                    <p class="text-lg text-stone-600 mb-8 leading-relaxed">Sabor Mexicana was born from a love for family, community, and the vibrant culinary traditions of our homeland. We believe in creating a warm, welcoming space where every guest feels like part of our familia.</p>
+                    <a href="about.html" class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">Read Our Story <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
         </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-neutral text-white section-divider">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-4xl lg:text-5xl font-extrabold">What Our Guests Are Saying</h2>
+          <p class="text-xl text-stone-400 mt-4 max-w-2xl mx-auto">Don't just take our word for it. Here's what the community thinks.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="reveal bg-neutral-light p-8 rounded-2xl border border-stone-600">
+            <div class="flex items-center gap-1 text-amber-400 mb-4 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-stone-300 mb-6 italic">"The best tacos I've had outside of Mexico City. The atmosphere is electric and the service is top-notch. A must-visit!"</p>
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&w=100&h=100" alt="Testimonial author" class="w-12 h-12 rounded-full object-cover">
+              <div><div class="font-semibold text-white">Carlos R.</div><div class="text-stone-400 text-sm">Local Food Blogger</div></div>
+            </div>
+          </div>
+          <div class="reveal bg-neutral-light p-8 rounded-2xl border border-stone-600" style="transition-delay: 0.1s;">
+            <div class="flex items-center gap-1 text-amber-400 mb-4 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-stone-300 mb-6 italic">"We celebrated our anniversary here and it was perfect. The margaritas are dangerously good and the molcajete was phenomenal."</p>
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&w=100&h=100" alt="Testimonial author" class="w-12 h-12 rounded-full object-cover">
+              <div><div class="font-semibold text-white">Jessica L.</div><div class="text-stone-400 text-sm">Anniversary Dinner</div></div>
+            </div>
+          </div>
+          <div class="reveal bg-neutral-light p-8 rounded-2xl border border-stone-600" style="transition-delay: 0.2s;">
+            <div class="flex items-center gap-1 text-amber-400 mb-4 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="text-stone-300 mb-6 italic">"A vibrant spot with authentic food. It gets busy, so make a reservation! The staff handled the crowd with grace and smiles."</p>
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1887&auto=format&fit=crop&w=100&h=100" alt="Testimonial author" class="w-12 h-12 rounded-full object-cover">
+              <div><div class="font-semibold text-white">Mike T.</div><div class="text-stone-400 text-sm">Weekend Visitor</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
-    <section class="py-24 sm:py-32 bg-stone-800 text-white section-divider">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl sm:text-5xl font-extrabold font-heading tracking-tight">What Our Guests Are Saying</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-stone-300">Don't just take our word for it. Here's what our community thinks.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-stone-700/50 p-8 rounded-2xl border border-stone-600 reveal card-hover">
-                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-stone-200 mb-6 italic">"The best mole I've had outside of Oaxaca. You can taste the authenticity and care in every dish. This is our new go-to spot!"</p>
-                    <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Customer" class="w-12 h-12 rounded-full object-cover">
-                        <div><div class="font-semibold">Carlos R.</div><div class="text-stone-400 text-sm">Local Food Blogger</div></div>
-                    </div>
-                </div>
-                <div class="bg-stone-700/50 p-8 rounded-2xl border border-stone-600 reveal card-hover" style="transition-delay: 200ms;">
-                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-stone-200 mb-6 italic">"An absolute gem. The atmosphere is warm and inviting, the staff is friendly, and the spicy margarita is a must-try. We'll be back!"</p>
-                    <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Customer" class="w-12 h-12 rounded-full object-cover">
-                        <div><div class="font-semibold">Jessica L.</div><div class="text-stone-400 text-sm">Date Night Regular</div></div>
-                    </div>
-                </div>
-                <div class="bg-stone-700/50 p-8 rounded-2xl border border-stone-600 reveal card-hover" style="transition-delay: 400ms;">
-                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-stone-200 mb-6 italic">"Finally, a place that gets guacamole right! Fresh, chunky, and perfectly seasoned. The carnitas tacos are life-changing."</p>
-                    <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Customer" class="w-12 h-12 rounded-full object-cover">
-                        <div><div class="font-semibold">David M.</div><div class="text-stone-400 text-sm">Avocado Aficionado</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- CTA Section -->
+    <section class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral mb-6">Ready for a Fiesta of Flavor?</h2>
+        <p class="text-xl text-stone-600 mb-10">Join us for an unforgettable dining experience. Reserve your table now and let us transport you to the heart of Mexico.</p>
+        <a href="contact.html#reservations" class="btn-primary inline-block text-white px-10 py-5 rounded-full font-bold text-xl transition-all duration-300">
+          Book Your Table Today <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
     </section>
 
-    <!-- CTA SECTION -->
-    <section class="py-24 sm:py-32 bg-white">
-        <div class="max-w-4xl mx-auto px-4 text-center reveal">
-            <h2 class="text-4xl sm:text-5xl font-extrabold font-heading text-stone-900 tracking-tight">Ready for an Unforgettable Meal?</h2>
-            <p class="mt-4 max-w-xl mx-auto text-lg text-stone-600">Join us for a dining experience that celebrates the vibrant culture and rich flavors of Mexico. Your table is waiting.</p>
-            <div class="mt-10">
-                <a href="reservations.html" class="btn-primary text-lg px-10 py-4 rounded-full font-bold">Make a Reservation <i class="fas fa-arrow-right ml-2"></i></a>
-            </div>
-        </div>
-    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-neutral text-stone-300 py-16">
+  <footer class="bg-neutral text-white pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-4 gap-12">
-        <div class="md:col-span-1">
-          <a href="index.html" class="text-3xl font-bold font-heading mb-4 inline-block">
-            <span class="gradient-text">Sabor Auténtico</span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="mb-8 md:mb-0">
+          <a href="index.html" class="text-3xl font-extrabold mb-4 inline-block">
+            <span class="gradient-text">Sabor Mexicana</span>
           </a>
-          <p class="text-stone-400">A Taste of Tradition, Served Daily.</p>
+          <p class="text-stone-400">Authentic flavors, modern soul. Your neighborhood destination for true Mexican cuisine.</p>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Quick Links</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Quick Links</h4>
           <ul class="space-y-3 text-stone-400">
             <li><a href="index.html" class="hover:text-white transition">Home</a></li>
             <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
-            <li><a href="menu.html" class="hover:text-white transition">Menu</a></li>
-            <li><a href="reservations.html" class="hover:text-white transition">Reservations</a></li>
+            <li><a href="services.html" class="hover:text-white transition">Menu & Catering</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Contact</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Contact Us</h4>
           <ul class="space-y-3 text-stone-400">
-            <li class="flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-red-500"></i><span>123 Flavor St,<br>Foodie Town, CA 90210</span></li>
-            <li class="flex items-center"><i class="fas fa-phone mr-3 text-red-500"></i><a href="tel:555-123-4567" class="hover:text-white transition">(555) 123-4567</a></li>
-            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-red-500"></i><a href="mailto:hola@saborautentico.com" class="hover:text-white transition">hola@saborautentico.com</a></li>
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1.5 text-red-500"></i><span>123 Culinary Lane,<br>Foodie Town, CA 90210</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-envelope text-red-500"></i><a href="mailto:hola@sabormexicana.com" class="hover:text-white transition">hola@sabormexicana.com</a></li>
+            <li class="flex items-center gap-3"><i class="fas fa-phone text-red-500"></i><a href="tel:+15551234567" class="hover:text-white transition">+1 (555) 123-4567</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Follow Us</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Follow Us</h4>
+          <p class="text-stone-400 mb-4">Join our community online for updates and specials.</p>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
           </div>
         </div>
       </div>
       <div class="border-t border-stone-800 mt-12 pt-8 text-center text-stone-500">
-        <p>&copy; 2024 Sabor Auténtico. All rights reserved.</p>
+        <p>&copy; 2024 Sabor Mexicana. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.onscroll = () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-md');
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-md');
       }
-    });
-  }, { threshold: 0.1 });
+    };
 
-  document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
-  });
-</script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Intersection Observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
