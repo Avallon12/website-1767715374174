@@ -3,190 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Sabor Auténtico</title>
+  <title>Contact & Reservations - Sabor Mexicana</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --primary: #DC2626; --secondary: #F59E0B; --neutral: #1C1917; --neutral-light: #44403C; --background: #FFFBEB; }
-    body { background-color: var(--background); font-family: 'Inter', sans-serif; }
+    :root {
+      --primary: #DC2626;
+      --secondary: #F59E0B;
+      --neutral: #1C1917;
+      --neutral-light: #44403C;
+    }
+    body { background-color: #FFF8F5; font-family: 'Inter', sans-serif; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .btn-primary { background-color: var(--primary); color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2); }
-    .btn-primary:hover { background-color: #B91C1C; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3); }
-    .nav-link { position: relative; color: var(--neutral-light); }
-    .nav-link.active { color: var(--primary); font-weight: 600; }
-    .nav-link:not(.active)::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
-    .nav-link:hover::after { width: 100%; }
-    .form-input { border: 1px solid #D6D3D1; transition: border-color 0.3s, box-shadow 0.3s; }
-    .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); outline: none; }
+    .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-link.active { color: var(--primary); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; margin: auto; width: 6px; height: 6px; background-color: var(--primary); border-radius: 50%; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .form-input { transition: all 0.3s; }
+    .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); }
   </style>
 </head>
-<body class="text-stone-800">
+<body class="text-neutral">
 
-  <!-- NAVIGATION -->
-  <nav class="fixed w-full z-50 top-0 backdrop-blur-lg bg-white/80 border-b border-stone-200/80">
+  <header class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-md" id="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <a href="index.html" class="text-3xl font-bold font-heading">
-          <span class="gradient-text">Sabor Auténtico</span>
+        <a href="index.html" class="text-3xl font-extrabold">
+          <span class="gradient-text">Sabor Mexicana</span>
         </a>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="about.html" class="nav-link">About Us</a>
-          <a href="menu.html" class="nav-link">Menu</a>
-          <a href="reservations.html" class="nav-link">Reservations</a>
-          <a href="contact.html" class="nav-link active">Contact</a>
-        </div>
+        <nav class="hidden md:flex items-center space-x-10">
+          <a href="index.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Home</a>
+          <a href="about.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">About Us</a>
+          <a href="services.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Menu & Catering</a>
+          <a href="contact.html" class="nav-link active relative text-lg font-semibold text-neutral">Contact</a>
+        </nav>
         <div class="hidden md:block">
-            <a href="reservations.html" class="btn-primary px-6 py-2.5 rounded-full font-semibold">Book a Table</a>
+            <a href="contact.html#reservations" class="btn-primary text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300 flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check"></i> Reserve a Table
+            </a>
         </div>
-        <button class="md:hidden text-stone-600"><i class="fas fa-bars text-xl"></i></button>
+        <button id="mobile-menu-button" class="md:hidden text-neutral text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-  </nav>
-
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg">
+      <a href="index.html" class="block py-3 px-6 text-lg text-stone-700">Home</a>
+      <a href="about.html" class="block py-3 px-6 text-lg text-stone-700">About Us</a>
+      <a href="services.html" class="block py-3 px-6 text-lg text-stone-700">Menu & Catering</a>
+      <a href="contact.html" class="block py-3 px-6 text-lg font-semibold text-red-700">Contact</a>
+      <div class="p-4"><a href="contact.html#reservations" class="btn-primary w-full text-center text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300">Reserve a Table</a></div>
+    </div>
+  </header>
+  
   <main class="pt-20">
-    <!-- CONTACT SECTION -->
-    <section class="py-24 sm:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl md:text-6xl font-extrabold font-heading text-stone-900 tracking-tight">Get in Touch</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-stone-600">Have a question, a comment, or planning a special event? We'd love to hear from you.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-5 gap-12">
-                <!-- Contact Info -->
-                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-xl">
-                    <h2 class="text-2xl font-bold font-heading text-stone-900 mb-6">Contact Information</h2>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-red-600 text-xl w-6 text-center mt-1"></i>
-                            <div class="ml-4">
-                                <h3 class="font-semibold text-stone-800">Address</h3>
-                                <p class="text-stone-600">123 Flavor St, Foodie Town, CA 90210</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-phone text-red-600 text-xl w-6 text-center mt-1"></i>
-                            <div class="ml-4">
-                                <h3 class="font-semibold text-stone-800">Phone</h3>
-                                <a href="tel:555-123-4567" class="text-stone-600 hover:text-red-700">(555) 123-4567</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-envelope text-red-600 text-xl w-6 text-center mt-1"></i>
-                            <div class="ml-4">
-                                <h3 class="font-semibold text-stone-800">Email</h3>
-                                <a href="mailto:hola@saborautentico.com" class="text-stone-600 hover:text-red-700">hola@saborautentico.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h2 class="text-2xl font-bold font-heading text-stone-900 mt-10 mb-6 border-t pt-6">Hours of Operation</h2>
-                    <div class="space-y-2 text-stone-600">
-                        <div class="flex justify-between"><span class="font-medium text-stone-800">Monday - Thursday</span><span>5:00 PM - 10:00 PM</span></div>
-                        <div class="flex justify-between"><span class="font-medium text-stone-800">Friday - Saturday</span><span>5:00 PM - 11:00 PM</span></div>
-                        <div class="flex justify-between"><span class="font-medium text-stone-800">Sunday</span><span>4:00 PM - 9:00 PM</span></div>
-                    </div>
-
-                    <div class="mt-10 border-t pt-6">
-                        <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center text-stone-600 hover:bg-red-600 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center text-stone-600 hover:bg-red-600 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center text-stone-600 hover:bg-red-600 hover:text-white transition"><i class="fab fa-yelp"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="lg:col-span-3 bg-white p-8 rounded-2xl shadow-xl">
-                    <h2 class="text-2xl font-bold font-heading text-stone-900 mb-6">Send Us a Message</h2>
-                    <form action="#" method="POST" class="space-y-6">
-                        <div class="grid sm:grid-cols-2 gap-6">
-                             <div>
-                                <label for="name" class="block text-sm font-medium text-stone-700">Full Name</label>
-                                <input type="text" name="name" id="name" placeholder="John Doe" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-stone-700">Email Address</label>
-                                <input type="email" name="email" id="email" placeholder="you@example.com" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-stone-700">Subject</label>
-                            <input type="text" name="subject" id="subject" placeholder="General Inquiry" class="mt-1 block w-full py-2.5 px-4 rounded-md form-input">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-stone-700">Message</label>
-                            <textarea id="message" name="message" rows="6" class="mt-1 block w-full p-4 rounded-md form-input" placeholder="Your message here..."></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full btn-primary text-lg font-bold py-4 px-8 rounded-full">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <!-- Contact Hero -->
+    <section class="py-24 bg-neutral text-white text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-4">Get In Touch</h1>
+        <p class="text-xl text-stone-300 leading-relaxed">We'd love to hear from you. Whether it's a reservation, a catering inquiry, or just to say hola, here's how you can reach us.</p>
+      </div>
     </section>
 
-    <!-- MAP PLACEHOLDER -->
-    <section>
-        <div class="relative h-96 bg-stone-300">
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://www.mapquestapi.com/staticmap/v5/map?key=YOUR_API_KEY&center=34.0522,-118.2437&zoom=14&size=1200,400&type=light&scalebar=false'); filter: grayscale(1) contrast(1.2) opacity(0.5);"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg">
-                    <i class="fas fa-map-pin text-5xl text-red-600"></i>
-                    <h3 class="mt-4 text-2xl font-bold font-heading text-stone-800">Find Us Here!</h3>
-                    <p class="text-stone-600">123 Flavor St, Foodie Town, CA 90210</p>
+    <!-- Contact Form & Info Section -->
+    <section class="py-24 bg-white" id="reservations">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <!-- Form -->
+          <div class="bg-stone-50 p-8 lg:p-12 rounded-2xl border border-stone-200 reveal">
+            <h2 class="text-3xl font-extrabold text-neutral mb-2">Make a Reservation</h2>
+            <p class="text-stone-600 mb-8">Fill out the form below to request a table. For parties larger than 8, please call us directly.</p>
+            <form action="#" method="POST" class="space-y-6">
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-stone-700 mb-1">Full Name</label>
+                  <input type="text" name="name" id="name" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none" placeholder="John Doe">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-stone-700 mb-1">Phone</label>
+                  <input type="tel" name="phone" id="phone" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none" placeholder="(555) 123-4567">
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-stone-700 mb-1">Email</label>
+                <input type="email" name="email" id="email" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none" placeholder="you@example.com">
+              </div>
+              <div class="grid sm:grid-cols-3 gap-6">
+                 <div>
+                  <label for="guests" class="block text-sm font-medium text-stone-700 mb-1">Guests</label>
+                  <input type="number" name="guests" id="guests" min="1" max="8" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none" placeholder="2">
+                </div>
+                <div>
+                  <label for="date" class="block text-sm font-medium text-stone-700 mb-1">Date</label>
+                  <input type="date" name="date" id="date" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none">
+                </div>
+                 <div>
+                  <label for="time" class="block text-sm font-medium text-stone-700 mb-1">Time</label>
+                  <input type="time" name="time" id="time" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none">
+                </div>
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-stone-700 mb-1">Special Requests</label>
+                <textarea name="message" id="message" rows="4" class="form-input w-full px-4 py-3 rounded-lg border-stone-300 focus:outline-none" placeholder="Celebrating an anniversary, etc."></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn-primary w-full text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">
+                  Request Reservation
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- Info -->
+          <div class="reveal">
+            <h2 class="text-3xl font-extrabold text-neutral mb-6">Contact Information</h2>
+            <div class="space-y-8">
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center text-2xl text-red-600 flex-shrink-0">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-neutral">Our Location</h3>
+                  <p class="text-stone-600">123 Culinary Lane, Foodie Town, CA 90210</p>
+                  <a href="#" class="text-red-600 font-semibold hover:underline mt-1 inline-block">Get Directions</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center text-2xl text-red-600 flex-shrink-0">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-neutral">Call Us</h3>
+                  <p class="text-stone-600">Reservations & Inquiries</p>
+                  <a href="tel:+15551234567" class="text-lg text-neutral font-semibold hover:text-red-600">+1 (555) 123-4567</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-100 to-amber-100 rounded-full flex items-center justify-center text-2xl text-red-600 flex-shrink-0">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-neutral">Email Us</h3>
+                  <p class="text-stone-600">Catering & Private Events</p>
+                  <a href="mailto:hola@sabormexicana.com" class="text-lg text-neutral font-semibold hover:text-red-600">hola@sabormexicana.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-stone-200">
+                <h3 class="text-xl font-bold text-neutral mb-4">Hours of Operation</h3>
+                <div class="flex justify-between text-stone-600">
+                    <span>Monday - Thursday</span>
+                    <span class="font-medium text-neutral">11:00 AM - 10:00 PM</span>
+                </div>
+                 <div class="flex justify-between text-stone-600 mt-2">
+                    <span>Friday - Saturday</span>
+                    <span class="font-medium text-neutral">11:00 AM - 11:00 PM</span>
+                </div>
+                 <div class="flex justify-between text-stone-600 mt-2">
+                    <span>Sunday</span>
+                    <span class="font-medium text-neutral">12:00 PM - 9:00 PM</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="bg-stone-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="h-96 bg-gradient-to-br from-red-500 to-amber-500 flex items-center justify-center text-white text-center p-8 reveal">
+                <div>
+                    <i class="fas fa-map-marked-alt text-6xl mb-4"></i>
+                    <h2 class="text-3xl font-bold">Find Us in the Heart of Foodie Town</h2>
+                    <p class="mt-2">Map Placeholder - Integrate Google Maps Here</p>
                 </div>
             </div>
         </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-neutral text-stone-300 py-16">
+  <footer class="bg-neutral text-white pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-4 gap-12">
-        <div class="md:col-span-1">
-          <a href="index.html" class="text-3xl font-bold font-heading mb-4 inline-block">
-            <span class="gradient-text">Sabor Auténtico</span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="mb-8 md:mb-0">
+          <a href="index.html" class="text-3xl font-extrabold mb-4 inline-block">
+            <span class="gradient-text">Sabor Mexicana</span>
           </a>
-          <p class="text-stone-400">A Taste of Tradition, Served Daily.</p>
+          <p class="text-stone-400">Authentic flavors, modern soul. Your neighborhood destination for true Mexican cuisine.</p>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Quick Links</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Quick Links</h4>
           <ul class="space-y-3 text-stone-400">
             <li><a href="index.html" class="hover:text-white transition">Home</a></li>
             <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
-            <li><a href="menu.html" class="hover:text-white transition">Menu</a></li>
-            <li><a href="reservations.html" class="hover:text-white transition">Reservations</a></li>
+            <li><a href="services.html" class="hover:text-white transition">Menu & Catering</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Contact</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Contact Us</h4>
           <ul class="space-y-3 text-stone-400">
-            <li class="flex items-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-red-500"></i><span>123 Flavor St,<br>Foodie Town, CA 90210</span></li>
-            <li class="flex items-center"><i class="fas fa-phone mr-3 text-red-500"></i><a href="tel:555-123-4567" class="hover:text-white transition">(555) 123-4567</a></li>
-            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-red-500"></i><a href="mailto:hola@saborautentico.com" class="hover:text-white transition">hola@saborautentico.com</a></li>
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1.5 text-red-500"></i><span>123 Culinary Lane,<br>Foodie Town, CA 90210</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-envelope text-red-500"></i><a href="mailto:hola@sabormexicana.com" class="hover:text-white transition">hola@sabormexicana.com</a></li>
+            <li class="flex items-center gap-3"><i class="fas fa-phone text-red-500"></i><a href="tel:+15551234567" class="hover:text-white transition">+1 (555) 123-4567</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-white mb-4 tracking-wider uppercase">Follow Us</h4>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Follow Us</h4>
+          <p class="text-stone-400 mb-4">Join our community online for updates and specials.</p>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="w-10 h-10 bg-stone-700 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
           </div>
         </div>
       </div>
       <div class="border-t border-stone-800 mt-12 pt-8 text-center text-stone-500">
-        <p>&copy; 2024 Sabor Auténtico. All rights reserved.</p>
+        <p>&copy; 2024 Sabor Mexicana. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Intersection Observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+    
+    // Set min date for date input
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+  </script>
 
 </body>
 </html>
