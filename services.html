@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Catering - Sabor Mexicana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #DC2626;
+      --secondary: #F59E0B;
+      --neutral: #1C1917;
+      --neutral-light: #44403C;
+    }
+    body { background-color: #FFF8F5; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-link.active { color: var(--primary); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; margin: auto; width: 6px; height: 6px; background-color: var(--primary); border-radius: 50%; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="text-neutral">
+
+  <header class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-md" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-3xl font-extrabold">
+          <span class="gradient-text">Sabor Mexicana</span>
+        </a>
+        <nav class="hidden md:flex items-center space-x-10">
+          <a href="index.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Home</a>
+          <a href="about.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">About Us</a>
+          <a href="services.html" class="nav-link active relative text-lg font-semibold text-neutral">Menu & Catering</a>
+          <a href="contact.html" class="nav-link relative text-lg font-medium text-stone-600 hover:text-neutral transition">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+            <a href="contact.html#reservations" class="btn-primary text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300 flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check"></i> Reserve a Table
+            </a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden text-neutral text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg">
+      <a href="index.html" class="block py-3 px-6 text-lg text-stone-700">Home</a>
+      <a href="about.html" class="block py-3 px-6 text-lg text-stone-700">About Us</a>
+      <a href="services.html" class="block py-3 px-6 text-lg font-semibold text-red-700">Menu & Catering</a>
+      <a href="contact.html" class="block py-3 px-6 text-lg text-stone-700">Contact</a>
+      <div class="p-4"><a href="contact.html#reservations" class="btn-primary w-full text-center text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300">Reserve a Table</a></div>
+    </div>
+  </header>
+  
+  <main class="pt-20">
+    <!-- Services Hero Section -->
+    <section class="py-24 bg-neutral text-white text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <h1 class="text-5xl lg:text-6xl font-extrabold mb-4">A Culinary Journey</h1>
+        <p class="text-xl text-stone-300 leading-relaxed">Explore our menu of authentic dishes and discover our catering options to bring the fiesta to your next event.</p>
+      </div>
+    </section>
+
+    <!-- Menu Highlights -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">Our Menu</span>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral mt-4">Signature Dishes</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="reveal group overflow-hidden rounded-2xl shadow-lg border border-stone-200">
+                    <img src="https://images.unsplash.com/photo-1565299585323-15d6e08547e9?q=80&w=1989&auto=format&fit=crop&w=600&h=400" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" alt="Tacos">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-2xl font-bold text-neutral mb-2">Tacos Al Pastor</h3>
+                        <p class="text-stone-600">Marinated pork, pineapple, onion, cilantro.</p>
+                    </div>
+                </div>
+                <div class="reveal group overflow-hidden rounded-2xl shadow-lg border border-stone-200" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1627907222043-9c1a4d858348?q=80&w=1935&auto=format&fit=crop&w=600&h=400" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" alt="Enchiladas">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-2xl font-bold text-neutral mb-2">Enchiladas Rojas</h3>
+                        <p class="text-stone-600">Shredded chicken, red chili sauce, queso fresco.</p>
+                    </div>
+                </div>
+                <div class="reveal group overflow-hidden rounded-2xl shadow-lg border border-stone-200" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1625938139304-4102879c8a82?q=80&w=1887&auto=format&fit=crop&w=600&h=400" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" alt="Ceviche">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-2xl font-bold text-neutral mb-2">Ceviche Fresco</h3>
+                        <p class="text-stone-600">Lime-cured shrimp, tomato, onion, avocado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12 reveal">
+                <a href="#" class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">Download Full Menu (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Packages (Pricing Table) -->
+    <section class="py-24 bg-stone-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">Catering</span>
+          <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral mt-4">Bring Sabor to Your Event</h2>
+          <p class="text-xl text-stone-600 mt-4 max-w-2xl mx-auto">From intimate gatherings to large celebrations, we have the perfect package.</p>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+          <!-- Tier 1 -->
+          <div class="reveal flex flex-col bg-white p-8 rounded-2xl border border-stone-200 shadow-lg">
+            <h3 class="text-2xl font-bold text-neutral">Fiesta Pequeña</h3>
+            <p class="text-stone-500 mb-6">Perfect for small groups & office lunches</p>
+            <div class="text-5xl font-extrabold text-neutral mb-6">$25<span class="text-lg font-medium text-stone-500">/person</span></div>
+            <ul class="space-y-4 text-stone-600 mb-8 flex-grow">
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>2 Taco Fillings</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>Rice & Beans</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>Chips & Salsa</span></li>
+            </ul>
+            <a href="contact.html" class="w-full text-center bg-stone-200 text-neutral px-6 py-3 rounded-full font-bold transition hover:bg-stone-300">Inquire Now</a>
+          </div>
+          <!-- Tier 2 (Featured) -->
+          <div class="reveal flex flex-col bg-neutral text-white p-8 rounded-2xl shadow-2xl transform lg:scale-105 relative">
+            <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-red-600 to-amber-500 rounded-full text-sm font-bold uppercase tracking-wider">Most Popular</div>
+            <h3 class="text-3xl font-bold">Gran Celebración</h3>
+            <p class="text-stone-300 mb-6">The ultimate taco bar experience</p>
+            <div class="text-5xl font-extrabold mb-6">$40<span class="text-lg font-medium text-stone-300">/person</span></div>
+            <ul class="space-y-4 text-stone-300 mb-8 flex-grow">
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i><span>3 Taco Fillings</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i><span>Rice & Beans</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i><span>Chips, Salsa & Guacamole</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i><span>1 Appetizer Choice</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i><span>Dessert Churros</span></li>
+            </ul>
+            <a href="contact.html" class="btn-primary w-full text-center text-white px-6 py-4 rounded-full font-bold text-lg transition-all duration-300">Book Your Event</a>
+          </div>
+          <!-- Tier 3 -->
+          <div class="reveal flex flex-col bg-white p-8 rounded-2xl border border-stone-200 shadow-lg">
+            <h3 class="text-2xl font-bold text-neutral">Boda Mexicana</h3>
+            <p class="text-stone-500 mb-6">Full-service catering for your big day</p>
+            <div class="text-5xl font-extrabold text-neutral mb-6">Custom<span class="text-lg font-medium text-stone-500"></span></div>
+            <ul class="space-y-4 text-stone-600 mb-8 flex-grow">
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>Customizable Menu</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>On-site Chefs & Staff</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>Bar Service Available</span></li>
+              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span>Full Setup & Cleanup</span></li>
+            </ul>
+            <a href="contact.html" class="w-full text-center bg-stone-200 text-neutral px-6 py-3 rounded-full font-bold transition hover:bg-stone-300">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-4xl lg:text-5xl font-extrabold text-neutral">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-4 reveal">
+          <div class="faq-item bg-stone-50 border border-stone-200 rounded-lg">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+              <span class="text-lg font-semibold text-neutral">Do you take reservations?</span>
+              <i class="fas fa-chevron-down faq-icon transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 text-stone-600">
+              <p>Yes! We highly recommend making a reservation, especially for weekends. You can book a table through the form on our contact page or by giving us a call.</p>
+            </div>
+          </div>
+          <div class="faq-item bg-stone-50 border border-stone-200 rounded-lg">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+              <span class="text-lg font-semibold text-neutral">Do you offer vegetarian or gluten-free options?</span>
+              <i class="fas fa-chevron-down faq-icon transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 text-stone-600">
+              <p>Absolutely! We have a variety of vegetarian dishes, and many of our items are naturally gluten-free as they are corn-based. Please inform your server of any dietary restrictions, and our kitchen will be happy to accommodate.</p>
+            </div>
+          </div>
+          <div class="faq-item bg-stone-50 border border-stone-200 rounded-lg">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+              <span class="text-lg font-semibold text-neutral">Is there parking available?</span>
+              <i class="fas fa-chevron-down faq-icon transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 text-stone-600">
+              <p>We have a small parking lot adjacent to the restaurant, and there is ample street parking available in the surrounding neighborhood.</p>
+            </div>
+          </div>
+          <div class="faq-item bg-stone-50 border border-stone-200 rounded-lg">
+            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+              <span class="text-lg font-semibold text-neutral">Can I host a private event at Sabor Mexicana?</span>
+              <i class="fas fa-chevron-down faq-icon transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 text-stone-600">
+              <p>Yes, we have a semi-private dining area perfect for celebrations and corporate events. Please visit our contact page to submit an event inquiry, and our coordinator will get back to you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-neutral text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="mb-8 md:mb-0">
+          <a href="index.html" class="text-3xl font-extrabold mb-4 inline-block">
+            <span class="gradient-text">Sabor Mexicana</span>
+          </a>
+          <p class="text-stone-400">Authentic flavors, modern soul. Your neighborhood destination for true Mexican cuisine.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Quick Links</h4>
+          <ul class="space-y-3 text-stone-400">
+            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="services.html" class="hover:text-white transition">Menu & Catering</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Contact Us</h4>
+          <ul class="space-y-3 text-stone-400">
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1.5 text-red-500"></i><span>123 Culinary Lane,<br>Foodie Town, CA 90210</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-envelope text-red-500"></i><a href="mailto:hola@sabormexicana.com" class="hover:text-white transition">hola@sabormexicana.com</a></li>
+            <li class="flex items-center gap-3"><i class="fas fa-phone text-red-500"></i><a href="tel:+15551234567" class="hover:text-white transition">+1 (555) 123-4567</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4 tracking-wider uppercase">Follow Us</h4>
+          <p class="text-stone-400 mb-4">Join our community online for updates and specials.</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-12 h-12 bg-neutral-light rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 mt-12 pt-8 text-center text-stone-500">
+        <p>&copy; 2024 Sabor Mexicana. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Intersection Observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
